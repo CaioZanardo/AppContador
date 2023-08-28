@@ -19,13 +19,13 @@ class Tela_inicial extends StatefulWidget {
 }
 
 class _Tela_inicialState extends State<Tela_inicial> {
-  int _contadorPessoas = 0;
+  int _pessoa = 0;
 
-  _atualizarContador(String title) {
+  _statusContador(String title) {
     setState(() {
       if (title == "+")
-        _contadorPessoas++;
-      else if (_contadorPessoas > 0) _contadorPessoas--;
+        _pessoa++;
+      else if (_pessoa > 0) _pessoa--;
     });
   }
 
@@ -36,7 +36,7 @@ class _Tela_inicialState extends State<Tela_inicial> {
       theme: ThemeData(primaryColor: Colors.blue),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Contador de Pessoas"),
+          title: Text("App Contador de Pessoas"),
           centerTitle: true,
         ),
         body: _body(),
@@ -64,7 +64,7 @@ class _Tela_inicialState extends State<Tela_inicial> {
 
   _contador() {
     return Text(
-      '$_contadorPessoas',
+      '$_pessoa',
       style: TextStyle(
         color: Colors.white,
         fontSize: 144,
@@ -81,7 +81,7 @@ class _Tela_inicialState extends State<Tela_inicial> {
           primary: title == "+" ? Colors.green : Colors.red,
         ),
         onPressed: () {
-          _atualizarContador(title);
+          _statusContador(title);
         },
         child: Text(
           title,
